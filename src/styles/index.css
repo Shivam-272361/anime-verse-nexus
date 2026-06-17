@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --cursor-x: 50vw;
+  --cursor-y: 50vh;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at var(--cursor-x) var(--cursor-y), rgba(65, 215, 255, 0.15), transparent 28rem),
+    radial-gradient(circle at 14% 12%, rgba(155, 92, 255, 0.2), transparent 28rem),
+    radial-gradient(circle at 82% 18%, rgba(255, 79, 216, 0.16), transparent 26rem),
+    #050816;
+  color: #f8fbff;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+button,
+a,
+input,
+select {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  color: #050816;
+  background: #41d7ff;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #080c1f;
+}
+
+::-webkit-scrollbar-thumb {
+  border: 2px solid #080c1f;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #41d7ff, #9b5cff, #ff4fd8);
+}
+
+.glass {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.045));
+  box-shadow: 0 18px 70px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(22px);
+}
+
+.glass-strong {
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: linear-gradient(135deg, rgba(12, 18, 44, 0.84), rgba(10, 11, 34, 0.62));
+  box-shadow: 0 24px 90px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(26px);
+}
+
+.neon-text {
+  background: linear-gradient(90deg, #f9fbff, #41d7ff 35%, #ff4fd8 72%, #fff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 30px rgba(65, 215, 255, 0.18);
+}
+
+.animated-border {
+  position: relative;
+  overflow: hidden;
+}
+
+.animated-border::before {
+  position: absolute;
+  z-index: 0;
+  inset: -160%;
+  content: '';
+  background: conic-gradient(from 90deg, transparent 0 64%, rgba(65, 215, 255, 0.9), rgba(255, 79, 216, 0.9), transparent 82%);
+  animation: borderSpin 8s linear infinite;
+}
+
+.animated-border > * {
+  position: relative;
+  z-index: 1;
+}
+
+.scroll-fade {
+  mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+}
+
+.grid-floor {
+  background-size: 44px 44px;
+  transform: perspective(700px) rotateX(62deg);
+  transform-origin: center top;
+}
+
+.card-image {
+  background-size: cover;
+  background-position: center;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(90deg, rgba(255,255,255,0.04) 25%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.04) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.8s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.trending-scroll {
+  animation: trendingScroll var(--scroll-duration, 60s) linear infinite;
+}
+
+.trending-scroll:hover {
+  animation-play-state: paused;
+}
+
+@keyframes trendingScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.search-dropdown {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(65, 215, 255, 0.3) transparent;
+}
+
+@media (pointer: fine) {
+  body {
+    cursor: none;
+  }
+}
